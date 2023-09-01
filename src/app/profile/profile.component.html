@@ -1,0 +1,222 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Profile Data</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered ">
+      <thead class="thead-dark">
+        <tr>
+          <th>User</th>
+          <th>Value</th>
+          <th>Action</th>
+  
+        </tr>
+      </thead>
+      <tbody *ngIf="profileData">
+        <tr>
+          <td>Created At</td>
+          <td>{{ profileData.data.createdAt }}</td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            update
+          </button>
+         
+        </tr>
+        <tr>
+          <td>Payment Methods</td>
+          <td>
+            <ul class="list-unstyled">
+              <li *ngFor="let method of profileData.paymentMethods">{{ method }}</li>
+            </ul>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>Role</td>
+          <td>{{ profileData.data.role }}</td>
+          
+        </tr>
+        <tr>
+          <td>Teams Assigned</td>
+          <td>
+            <ul class="list-unstyled">
+              <li *ngFor="let team of profileData.teamsAssigned">{{ team }}</li>
+            </ul>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>User Name</td>
+          <td>{{ profileData.data.userName }}</td>
+         
+        </tr>
+        <tr>
+          <td>_id</td>
+          <td>{{ profileData.data._id }}</td>
+          
+          
+        </tr>
+  
+        <tr>
+          <td>firstNameFurigana</td>
+          <td>{{ profileData.data.firstNameFurigana }}</td>        
+        </tr>
+  
+        <tr>
+          <td>firstNameKanji</td>
+          <td>{{ profileData.data.firstNameKanji }}</td>       
+          
+        </tr>
+        <tr>
+          <td>lastNameFurigana</td>
+          <td>{{ profileData.data.lastNameFurigana }}</td>   
+        </tr>
+  
+        <tr>
+          <td>lastNameKanji</td>
+          <td>{{ profileData.data.lastNameKanji }}</td>   
+        </tr>
+  
+        <tr>
+          <td> profileImage</td>
+          <td>{{ profileData.data. profileImage }}</td>   
+        </tr>
+  
+       
+  
+  
+  
+      </tbody>
+    </table>
+
+
+  </div>
+  <!-- <table class="table ">
+    <thead class="thead-dark">
+      <tr>
+        <th>User</th>
+        <th>Value</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody *ngIf="profileData">
+      <tr>
+        <td>Created At</td>
+        <td>{{ profileData.data.createdAt }}</td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+          update
+        </button>
+       
+      </tr>
+      <tr>
+        <td>Payment Methods</td>
+        <td>
+          <ul class="list-unstyled">
+            <li *ngFor="let method of profileData.paymentMethods">{{ method }}</li>
+          </ul>
+        </td>
+        
+      </tr>
+      <tr>
+        <td>Role</td>
+        <td>{{ profileData.data.role }}</td>
+        
+      </tr>
+      <tr>
+        <td>Teams Assigned</td>
+        <td>
+          <ul class="list-unstyled">
+            <li *ngFor="let team of profileData.teamsAssigned">{{ team }}</li>
+          </ul>
+        </td>
+        
+      </tr>
+      <tr>
+        <td>User Name</td>
+        <td>{{ profileData.data.userName }}</td>
+       
+      </tr>
+      <tr>
+        <td>_id</td>
+        <td>{{ profileData.data._id }}</td>
+        
+        
+      </tr>
+
+      <tr>
+        <td>firstNameFurigana</td>
+        <td>{{ profileData.data.firstNameFurigana }}</td>        
+      </tr>
+
+      <tr>
+        <td>firstNameKanji</td>
+        <td>{{ profileData.data.firstNameKanji }}</td>       
+        
+      </tr>
+      <tr>
+        <td>lastNameFurigana</td>
+        <td>{{ profileData.data.lastNameFurigana }}</td>   
+      </tr>
+
+      <tr>
+        <td>lastNameKanji</td>
+        <td>{{ profileData.data.lastNameKanji }}</td>   
+      </tr>
+
+      <tr>
+        <td> profileImage</td>
+        <td>{{ profileData.data. profileImage }}</td>   
+      </tr>
+
+     
+
+
+
+    </tbody>
+  </table> -->
+
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Update Record </h4>
+
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body ">
+          <form [formGroup]="updatForm" (ngSubmit)="userupdate()"> 
+            <div class="mb-3 mt-3">
+              <input type="text" class="form-control" placeholder="First Name (Furigana)" formControlName="firstNameFurigana">
+             
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="First Name (Kanji)" formControlName="firstNameKanji">
+             
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Last Name (Furigana)" formControlName="lastNameFurigana">
+              
+              
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Last Name (Kanji)" formControlName="lastNameKanji">
+              
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Profile Image" formControlName="profileImage">
+              
+            </div>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+          </form>
+          
+          
+        </div>
+  
+       
+  
+      </div>
+    </div>
+  </div>
+</div>
